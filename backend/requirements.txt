@@ -1,0 +1,8 @@
+dotenv
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+django-allauth
+pillow 
+psycopg2
+requests

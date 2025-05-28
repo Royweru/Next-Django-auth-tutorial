@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Our Platform!</h1>
+            <p>Hi {{ user.get_full_name|default:user.first_name|default:"there" }},</p>
+        </div>
+        
+        <p>Thank you for registering with us! To complete your registration and secure your account, please verify your email address by clicking the button below:</p>
+        
+        <div style="text-align: center;">
+            <a href="{{ activation_url }}" class="button">Verify Email Address</a>
+        </div>
+        
+        <p>If the button above doesn't work, you can copy and paste the following link into your browser:</p>
+        <p style="word-break: break-all; background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+            {{ activation_url }}
+        </p>
+        
+        <div class="warning">
+            <strong>⚠️ Important:</strong> This verification link will expire in {{ expiry_days }} day{{ expiry_days|pluralize }}. Please verify your email as soon as possible.
+        </div>
+        
+        <p>If you didn't create an account with us, please ignore this email. No account has been created and no further action is required.</p>
+        
+        <div class="footer">
+            <p>Best regards,<br>
+            The Team</p>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <p><small>
+                This is an automated email. Please do not reply to this message. 
+                If you need assistance, please contact our support team.
+            </small></p>
+        </div>
+    </div>
+</body>
+</html>
